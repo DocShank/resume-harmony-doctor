@@ -3,8 +3,6 @@ import { ResumeData } from "@/types/resume";
 import ProfessionalTemplate from "./templates/ProfessionalTemplate";
 import ModernTemplate from "./templates/ModernTemplate";
 import ExecutiveTemplate from "./templates/ExecutiveTemplate";
-import { useEffect, useRef } from "react";
-import html2pdf from "html2pdf.js";
 
 type ResumePreviewProps = {
   data: ResumeData;
