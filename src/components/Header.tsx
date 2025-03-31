@@ -1,7 +1,9 @@
 
+import { useNavigate } from "react-router-dom";
+import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tooltip } from "react-tooltip";
 import LogoAnimation from "./LogoAnimation";
-import { motion } from "framer-motion";
 
 type HeaderProps = {
   onDownloadPDF: () => void;
@@ -9,24 +11,33 @@ type HeaderProps = {
 };
 
 const Header = ({ onDownloadPDF, isFormValid }: HeaderProps) => {
+  const navigate = useNavigate();
+  
   return (
-    <header className="w-full px-6 py-4 bg-doctor-dark border-b border-doctor-accentDark flex justify-between items-center sticky top-0 z-50">
-      <div className="flex items-center">
-        <LogoAnimation />
-      </div>
-      
-      <motion.div 
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <Button 
+    <header className="sticky top-0 z-50 bg-doctor-dark shadow-lg">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="flex items-center cursor-pointer" onClick={() => navigate("/")}>
+          <LogoAnimation simplified={true} />
+        </div>
+        
+        <Button
           onClick={onDownloadPDF}
+          data-tooltip-id="download-tooltip"
+          data-tooltip-content={
+            isFormValid
+              ? "Download your resume as PDF"
+              : "Please fill in all required fields to download"
+          }
+          className={`bg-doctor-blue hover:bg-blue-600 text-white ${
+            !isFormValid && "opacity-70 cursor-not-allowed"
+          }`}
           disabled={!isFormValid}
-          className="bg-gradient-to-r from-doctor-accent to-doctor-accentDark hover:from-doctor-accentDark hover:to-doctor-accent text-doctor-light font-medium px-6 py-2 rounded-md"
         >
+          <Download className="mr-2 h-4 w-4" />
           Download PDF
         </Button>
-      </motion.div>
+        <Tooltip id="download-tooltip" />
+      </div>
     </header>
   );
 };

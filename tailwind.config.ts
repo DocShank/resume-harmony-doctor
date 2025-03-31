@@ -69,6 +69,10 @@ export default {
 					accent: '#4A5568',
 					accentDark: '#2D3748',
 					blue: '#3182CE',
+				},
+				teal: {
+					400: '#40E0D0',
+					500: '#00CED1',
 				}
 			},
 			fontFamily: {
