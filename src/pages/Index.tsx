@@ -15,7 +15,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tooltip } from "react-tooltip";
-import { toast } from "@/components/ui/toast";
+import { toast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import html2pdf from "html2pdf.js";
 
